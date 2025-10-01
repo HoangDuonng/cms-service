@@ -1,0 +1,54 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Audit files
+*-audit.json
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Dependencies
+dist/
+dist-ssr/
+build/
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Uploads
+uploads/
+temp/
+tmp/
+
+# Cache
+.cache/
+.npm/
+.eslintcache
+.stylelintcache
