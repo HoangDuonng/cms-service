@@ -1,12 +1,13 @@
 const winston = require('winston');
 const path = require('path');
+const config = require('../config');
 require('winston-daily-rotate-file');
 
 // Create logs directory if it doesn't exist
 const fs = require('fs');
-const logDir = process.env.LOG_DIR || 'logs';
+const logDir = config.paths.logs;
 if (!fs.existsSync(logDir)) {
-  fs.mkdirSync(logDir);
+  fs.mkdirSync(logDir, { recursive: true });
   console.log(`Created log directory: ${logDir}`);
 }
 
@@ -16,7 +17,7 @@ const loggerConfig = {
   maxFiles: process.env.LOG_MAX_FILES || '14d',
   datePattern: process.env.LOG_DATE_PATTERN || 'YYYY-MM-DD',
   zippedArchive: process.env.LOG_ZIPPED_ARCHIVE === 'true',
-  level: process.env.LOG_LEVEL || 'info'
+  level: config.logLevel || 'info'
 };
 
 console.log('Logger config:', loggerConfig);
