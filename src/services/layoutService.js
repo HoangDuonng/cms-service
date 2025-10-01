@@ -113,6 +113,22 @@ class LayoutService {
     await Layout.bulkWrite(operations);
     return this.getActiveBanners(group);
   }
+
+  async getBannersByPosition(position, options = {}) {
+    const { language = 'vi', isActive = true, group = null } = options;
+    const query = {
+      type: 'banner',
+      position,
+      language,
+      isActive,
+      'display.isVisible': true,
+      isDeleted: false
+    };
+    if (group) {
+      query.bannerGroup = group;
+    }
+    return this.findAll(query, { sort: { groupOrder: 1, order: 1 } });
+  }
 }
 
 module.exports = new LayoutService(); 
